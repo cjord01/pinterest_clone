@@ -6998,3 +6998,39 @@ Processing by PinsController#new as HTML
   [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1
   Rendered layouts/_header.html.erb (1.4ms)
 Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.2ms)
+  [1m[36mPin Load (0.2ms)[0m  [1mSELECT "pins".* FROM "pins" ORDER BY "pins"."id" ASC LIMIT 1[0m
+  [1m[35mPin Load (0.2ms)[0m  SELECT "pins".* FROM "pins" ORDER BY "pins"."id" ASC LIMIT 1
+  [1m[36mPin Load (0.2ms)[0m  [1mSELECT "pins".* FROM "pins" ORDER BY "pins"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mPin Load (0.2ms)[0m  [1mSELECT "pins".* FROM "pins" ORDER BY "pins"."id" ASC LIMIT 1[0m
+  [1m[36mPin Load (0.1ms)[0m  [1mSELECT "pins".* FROM "pins" ORDER BY "pins"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mPin Load (0.2ms)[0m  SELECT "pins".* FROM "pins" ORDER BY "pins"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mPin Load (0.2ms)[0m  SELECT "pins".* FROM "pins" WHERE "pins"."user_id" = ?  [[nil, 1]]
+SQLite3::SQLException: no such column: pins.user_id: SELECT "pins".* FROM "pins"  WHERE "pins"."user_id" = ?
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUserIdToPins (20141111191352)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "pins" ADD "user_id" integer[0m
+  [1m[35m (0.1ms)[0m  CREATE INDEX "index_pins_on_user_id" ON "pins" ("user_id")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20141111191352"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mPin Load (0.1ms)[0m  [1mSELECT "pins".* FROM "pins" ORDER BY "pins"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (17.5ms)[0m  [1mUPDATE "pins" SET "user_id" = ?, "updated_at" = ? WHERE "pins"."id" = 1[0m  [["user_id", 1], ["updated_at", Tue, 11 Nov 2014 19:20:11 UTC +00:00]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mPin Load (0.2ms)[0m  SELECT "pins".* FROM "pins" WHERE "pins"."user_id" = ?  [["user_id", 1]]
+  [1m[36mPin Load (0.2ms)[0m  [1mSELECT "pins".* FROM "pins"[0m
+  [1m[35mPin Load (0.2ms)[0m  SELECT "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mPin Load (0.1ms)[0m  SELECT "pins".* FROM "pins" WHERE "pins"."user_id" = ?  [["user_id", 1]]
+  [1m[36mPin Load (0.1ms)[0m  [1mSELECT "pins".* FROM "pins" WHERE "pins"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mUPDATE "pins" SET "user_id" = ?, "updated_at" = ? WHERE "pins"."id" = 2[0m  [["user_id", 1], ["updated_at", Tue, 11 Nov 2014 19:22:07 UTC +00:00]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mPin Load (0.1ms)[0m  SELECT "pins".* FROM "pins" WHERE "pins"."user_id" = ?  [["user_id", 1]]
